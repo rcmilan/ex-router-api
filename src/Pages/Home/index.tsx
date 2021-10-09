@@ -18,7 +18,12 @@ const Home: React.FC = () => {
     return <div>{error!.message}</div>;
   }
 
-  return <p>{data?.paragrafos}</p>;
+  return (
+    <>
+      <p>Buscando {paragraphsQtd} paragrafos</p>
+      <p>{data?.paragrafos}</p>
+    </>
+  );
 };
 
 export default Home;
