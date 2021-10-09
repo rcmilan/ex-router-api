@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { fetchParagraphs } from "../../Api/MussumIpsun";
+import TextComponent from "../../Components/TextComponent";
+import TitleComponent from "../../Components/TitleComponent";
 import { Paragraph } from "../../Types/Paragraph";
 
 const Home: React.FC = () => {
@@ -20,8 +22,8 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <p>Buscando {paragraphsQtd} paragrafos</p>
-      <p>{data?.paragrafos}</p>
+      <TitleComponent title={`Buscando ${paragraphsQtd} parágrafos`} />
+      <TextComponent text={`${data?.paragrafos}`} />
     </>
   );
 };

@@ -1,6 +1,8 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { fetchRandom } from "../../Api/MussumIpsun";
+import TextComponent from "../../Components/TextComponent";
+import TitleComponent from "../../Components/TitleComponent";
 import { Phrase } from "../../Types/Phrase";
 
 const About: React.FC = () => {
@@ -17,8 +19,8 @@ const About: React.FC = () => {
 
   return (
     <>
-      <p>Frase Aleatória</p>
-      <p>{data?.frase}</p>
+      <TitleComponent title={"Frase Aleatória"} />
+      <TextComponent text={`${data?.frase}`} />
     </>
   );
 };
