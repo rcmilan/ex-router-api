@@ -1,19 +1,29 @@
 import React, { useState } from "react";
+import { FieldValues, UseFormSetValue } from "react-hook-form";
 
 type Params = {
   id: string;
   htmlFor: string;
   labelText: string;
   register: object;
+  setValue: UseFormSetValue<FieldValues>;
 };
 
-function CounterComponent({ id, htmlFor, labelText, register }: Params) {
+function CounterComponent({
+  id,
+  htmlFor,
+  labelText,
+  register,
+  setValue,
+}: Params) {
   const [counterValue, setCounterValue] = useState(0);
 
   const addCounter = (increment: number) => {
     const newValue = counterValue + increment;
 
     setCounterValue(newValue);
+
+    setValue(id, newValue);
   };
 
   return (

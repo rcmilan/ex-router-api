@@ -8,6 +8,7 @@ const CatFormComponent: React.FC = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<Cat>();
 
@@ -37,6 +38,7 @@ const CatFormComponent: React.FC = () => {
             id="age"
             htmlFor="age"
             labelText="Idade"
+            setValue={setValue}
             register={register("age", { valueAsNumber: true })}
           />
         </div>
