@@ -1,6 +1,7 @@
 import React from "react";
 import { Cat } from "../../Types/Cat";
 import { useForm, SubmitHandler } from "react-hook-form";
+import TextInputComponent from "../TextInputComponent";
 
 const CatFormComponent: React.FC = () => {
   const {
@@ -17,29 +18,36 @@ const CatFormComponent: React.FC = () => {
     <form onSubmit={handleSubmit(submitForm)} className="w-full max-w-lg m-10">
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/2 px-3">
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-first-name"
-          >
-            Nome do felino
-          </label>
-          <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="grid-first-name"
-            type="text"
+          <TextInputComponent
+            id="name"
+            htmlFor="name"
+            labelText="Nome do Felino"
             placeholder="Nome"
-            {...register("name", {
+            register={register("name", {
               required: { value: true, message: "Campo obrigatório" },
-              minLength: { value: 2, message: "Minimo 2 caracteres" },
+              minLength: { value: 2, message: "Mínimo 2 caracteres" },
             })}
+            error={errors.name}
           />
-          {errors.name && (
-            <p className="text-red-500 text-xs italic">{errors.name.message}</p>
-          )}
         </div>
       </div>
 
-      <div className="flex flex-wrap -mx-3 mb-6">aaaaa</div>
+      <div className="flex flex-wrap -mx-3 mb-6">
+        <div className="w-full md:w-1/2 px-3">
+          <TextInputComponent
+            id="favActivity"
+            htmlFor="favActivity"
+            labelText="Atividade Favorita"
+            placeholder="Atividade"
+            register={register("favActivity", {
+              required: { value: true, message: "Campo obrigatório" },
+              minLength: { value: 5, message: "Mínimo 5 caracteres" },
+              maxLength: { value: 100, message: "Máximo 100 caracteres" },
+            })}
+            error={errors.favActivity}
+          />
+        </div>
+      </div>
 
       <div className="flex flex-wrap -mx-3 mb-6">
         <input
