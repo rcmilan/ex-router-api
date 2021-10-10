@@ -2,6 +2,7 @@ import React from "react";
 import { Cat } from "../../Types/Cat";
 import { useForm, SubmitHandler } from "react-hook-form";
 import TextInputComponent from "../TextInputComponent";
+import CounterComponent from "../CounterComponent";
 
 const CatFormComponent: React.FC = () => {
   const {
@@ -28,6 +29,15 @@ const CatFormComponent: React.FC = () => {
               minLength: { value: 2, message: "Mínimo 2 caracteres" },
             })}
             error={errors.name}
+          />
+        </div>
+
+        <div className="w-full md:w-1/2 px-3">
+          <CounterComponent
+            id="age"
+            htmlFor="age"
+            labelText="Idade"
+            register={register("age", { valueAsNumber: true })}
           />
         </div>
       </div>
