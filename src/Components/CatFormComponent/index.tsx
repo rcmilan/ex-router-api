@@ -3,6 +3,7 @@ import { Cat } from "../../Types/Cat";
 import { useForm, SubmitHandler } from "react-hook-form";
 import TextInputComponent from "../TextInputComponent";
 import CounterComponent from "../CounterComponent";
+import { postCat } from "../../Api/CatsApiBackend";
 
 const CatFormComponent: React.FC = () => {
   const {
@@ -12,12 +13,20 @@ const CatFormComponent: React.FC = () => {
     formState: { errors },
   } = useForm<Cat>();
 
-  const submitForm: SubmitHandler<Cat> = (data) => {
-    if (!!errors) console.log(data);
+  const submitFormAsync: SubmitHandler<Cat> = async (data) => {
+    if (!!errors) {
+      data.id = 0;
+      const result = await postCat(data);
+
+      console.log(result);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit(submitForm)} className="w-full max-w-lg m-10">
+    <form
+      onSubmit={handleSubmit(submitFormAsync)}
+      className="w-full max-w-lg m-10"
+    >
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/2 px-3">
           <TextInputComponent
